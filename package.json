@@ -1,0 +1,16 @@
+{
+  "name": "spellbee2018",
+  "version": "1.0.0",
+  "description": "Spelling bee practice app for Spelling bee 2018.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Navneet Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "jshint": "^2.9.5",
+    "prompt": "^1.0.0",
+    "say": "^0.14.0"
+  }
+}
