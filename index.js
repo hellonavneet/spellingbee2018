@@ -4,7 +4,7 @@ const readline = require('readline');
 const prompt = require('prompt');
 
 const filename = ".\\wordtext.txt";
-
+//say.setPlatform(say.platforms.MACOS);
 prompt.start({
     noHandleSIGINT: true
 });
@@ -42,6 +42,8 @@ function askWords(words) {
         }, () => {
             wordsAsked++;
             askWords(words);
+        }, () => {
+            process.exit();
         });
     }
 }
@@ -54,7 +56,7 @@ function getSchema() {
     const schema = {
         properties: {
             word: {
-                description: `(Score: ${correctResponses}/${wordsAsked}): Spell It`,
+                description: `(Score: ${correctResponses}/${wordsAsked}): Spell It or type exit`,
                 pattern: /^[a-zA-Z]+$/,
                 message: 'Word must be only letters.',
                 required: false
@@ -65,17 +67,19 @@ function getSchema() {
     return schema;
 }
 
-function promptWord(word, onCorrect, onIncorrect, count = 0) {
+function promptWord(word, onCorrect, onIncorrect, onExit, count = 0) {
     if (count > 0) {
         console.log("Try again...");
     }
-    say.speak(word, 'Alex', 0.5);
-    const callAgain = () => promptWord(word, onCorrect, onIncorrect, count);
+    say.speak(word, 'Microsoft David Desktop', 0.7);
+    const callAgain = () => promptWord(word, onCorrect, onIncorrect, onExit, count);
 
     prompt.get(getSchema(), (err, result) => {
         if (err || !result.word) {
             callAgain();
             return;
+        } else if (result.word === "exit") {
+            onExit();
         } else if (result.word === word) {
             onCorrect();
             return;
