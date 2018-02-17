@@ -3,7 +3,7 @@
 ## How to run
 * Clone this repository
 * Install Node js from http://nodejs.org
-* Switch to the repository directory i command prompt.
+* Switch to the repository directory in command prompt.
    > npm install
    
    > npm index.js
