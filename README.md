@@ -6,4 +6,4 @@
 * Switch to the repository directory in command prompt.
    > npm install
    
-   > npm index.js
+   > node index.js
