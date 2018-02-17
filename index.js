@@ -78,11 +78,11 @@ function promptWord(word, onCorrect, onIncorrect, onExit, count = 0) {
         if (err || !result.word) {
             callAgain();
             return;
-        } else if (result.word === "exit") {
-            onExit();
         } else if (result.word === word) {
             onCorrect();
             return;
+        } else if (result.word === "exit") {
+            onExit();
         } else {
             if (count >= 3) {
                 console.log("Correct spelling is :" + word);
